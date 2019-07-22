@@ -4,7 +4,7 @@ import routes from '../routes';
 import {renderToString} from 'react-dom/server';
 import Header from '../components/Header';
 import {Provider} from 'react-redux';
-import {getServerStore} from '../stor'
+import {getServerStore} from '../store';
 export default function (req, res) {
     let context = {};
     let html = renderToString(
