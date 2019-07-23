@@ -9,6 +9,22 @@ module.exports = merge(base, {
         path: path.resolve('build'),
         filename: 'server.js'
     },
-     // 忽略打包node核心模块
-     externals: [nodeExternal()],
+    // 忽略打包node核心模块
+    externals: [nodeExternal()],
+    module: {
+        rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    'isomorphic-style-loader', // 服务端使用避免dom操作
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: true
+                        }
+                    }
+                ]
+            }
+        ]
+    }
 });
